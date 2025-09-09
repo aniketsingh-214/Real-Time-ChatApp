@@ -154,6 +154,6 @@ chat-app/
 
 **Aniket Singh**
 
-* GitHub: [@your-username](https://github.com/aniketsingh-214)
-* LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/aniketsingh214)
+* GitHub: [aniketsingh-214](https://github.com/aniketsingh-214)
+* LinkedIn: [Aniket Singh](https://www.linkedin.com/in/aniketsingh214)
 
