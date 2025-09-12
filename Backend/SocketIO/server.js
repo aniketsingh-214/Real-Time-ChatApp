@@ -7,8 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://real-time-chat-app-2bcv.vercel.app",
+    origin: "https://your-frontend.vercel.app", 
     methods: ["GET", "POST"],
+    credentials: true
   },
 });
 
