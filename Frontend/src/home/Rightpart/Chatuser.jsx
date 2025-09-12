@@ -24,23 +24,17 @@ function Chatuser() {
       </div>
       <div>
         <h1 className="text-xl">{selectedConversation.name}</h1>
-        {/* <span className="text-sm font-bold text-green-500">
+        <span
+          className={`text-sm font-bold ${
+            getOnlineUsersStatus(selectedConversation?._id) === "Online"
+              ? "text-green-500"
+              : "text-white"
+          }`}
+        >
           {onlineUsers.length === 0
             ? "Loading..."
             : getOnlineUsersStatus(selectedConversation?._id)}
-        </span> */}
-        <span
-  className={`text-sm font-bold ${
-    getOnlineUsersStatus(selectedConversation?._id) === "Online"
-      ? "text-green-500"
-      : "text-white"
-  }`}
->
-  {onlineUsers.length === 0
-    ? "Loading..."
-    : getOnlineUsersStatus(selectedConversation?._id)}
-</span>
-
+        </span>
       </div>
     </div>
   );

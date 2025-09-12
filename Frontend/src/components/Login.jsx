@@ -20,19 +20,26 @@ function Login() {
     };
 
     axios
-      .post("/api/user/login", userInfo)
-      .then((response) => {
-        if (response.data) {
-          toast.success("Login successful");
-        }
-        localStorage.setItem("ChatApp", JSON.stringify(response.data));
-        setAuthUser(response.data);
-      })
-      .catch((error) => {
-        if (error.response) {
-          toast.error("Error: " + error.response.data.error);
-        }
-      });
+  .post(`${process.env.REACT_APP_API_BASE}/api/user/signup`, userInfo)
+  .then((response) => {
+    if (response.data) {
+      toast.success("Signup successful");
+    }
+    localStorage.setItem("ChatApp", JSON.stringify(response.data));
+    setAuthUser(response.data);
+  })
+  .catch((error) => {
+    if (error.response) {
+      const message =
+        error.response.data.error ||
+        error.response.data.message ||
+        JSON.stringify(error.response.data);
+      toast.error("Error: " + message);
+    } else {
+      toast.error("An unexpected error occurred");
+    }
+  });
+
   };
   return (
   <>
