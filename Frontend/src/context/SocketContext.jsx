@@ -14,7 +14,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://real-time-chat-app-rko9.vercel.app", {
+      const socket = io("https://real-timechatapp214.vercel.app", {
         query: {
           userId: authUser.user._id,
         },
