@@ -27,7 +27,7 @@ function Signup() {
       confirmPassword: data.confirmPassword,
     };
     await axios
-    .post("https://real-time-chat-app-rko9.vercel.app/api/user/signup", userInfo)
+    .post("https://real-timechatapp214.vercel.app/api/user/signup", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
