@@ -12,7 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://real-time-chat-app-2bcv.vercel.app",  
+  origin: "https://real-time-chat-application-wine.vercel.app",  
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
