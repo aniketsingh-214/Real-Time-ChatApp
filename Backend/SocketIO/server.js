@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://realtimechatapp214.vercel.app", 
+    origin: "https://real-time-chat-application-wine.vercel.app", 
     methods: ["GET", "POST"],
     credentials: true
   },
