@@ -20,7 +20,7 @@ function Login() {
     };
 
     axios
-  .post("https://real-timechatapp214.vercel.app/api/user/login", userInfo)
+  .post(`${import.meta.env.VITE_API_URL}/user/login`, userInfo, { withCredentials: true })
   .then((response) => {
     if (response.data) {
       toast.success("Signup successful");
@@ -101,6 +101,7 @@ function Login() {
             type="password"
             className="w-full bg-transparent outline-none text-gray-800"
             placeholder="Password"
+            autoComplete="current-password"
             {...register("password", { required: true })}
           />
         </label>

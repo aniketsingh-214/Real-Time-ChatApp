@@ -27,7 +27,7 @@ function Signup() {
       confirmPassword: data.confirmPassword,
     };
     await axios
-    .post("https://real-timechatapp214.vercel.app/api/user/signup", userInfo)
+    .post(`${import.meta.env.VITE_API_URL}/user/signup`, userInfo, { withCredentials: true })
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
@@ -123,6 +123,7 @@ function Signup() {
             <input
               type="password"
               placeholder="Password"
+              autoComplete="new-password"
               className="w-full bg-transparent outline-none text-gray-800"
               {...register("password", { required: true })}
             />
@@ -150,6 +151,7 @@ function Signup() {
             <input
               type="password"
               placeholder="Confirm Password"
+              autoComplete="new-password"
               className="w-full bg-transparent outline-none text-gray-800"
               {...register("confirmPassword", {
                 required: true,

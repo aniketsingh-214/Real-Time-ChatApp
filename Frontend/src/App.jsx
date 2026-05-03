@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Left from "./home/Leftpart/Left";
 import Right from "./home/Rightpart/Right";
 import Signup from "./components/Signup";
@@ -9,7 +10,8 @@ import Logout from "./home/left1/Logout";
 import { Navigate, Route, Routes } from "react-router-dom";
 function App() {
   const [authUser, setAuthUser] = useAuth();
-  console.log(authUser);
+  const [showProfile, setShowProfile] = useState(false);
+
   return (
     <>
       <Routes>
@@ -17,9 +19,9 @@ function App() {
           path="/"
           element={
             authUser ? (
-              <div className="flex h-screen">
-                <Logout />
-                <Left />
+              <div className="flex h-screen overflow-hidden">
+                <Logout onProfileClick={() => setShowProfile(true)} />
+                <Left showProfile={showProfile} onProfileClose={() => setShowProfile(false)} />
                 <Right />
               </div>
             ) : (

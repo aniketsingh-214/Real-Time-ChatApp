@@ -7,7 +7,7 @@ function Search() {
   const [search, setSearch] = useState("");
   const [allUsers] = useGetAllUsers();
   const { setSelectedConversation } = useConversation();
-  console.log(allUsers);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
@@ -22,15 +22,15 @@ function Search() {
     }
   };
   return (
-  <div className="h-[10vh] flex items-center px-4 sm:px-6">
-    <form onSubmit={handleSubmit} className="w-full">
+    <div className="h-[8vh] flex items-center px-2">
+      <form onSubmit={handleSubmit} className="w-full">
       <div className="flex items-center gap-3">
-        <label className="flex items-center w-full px-4 py-[6px] rounded-md bg-royalblue-800 border border-slate-600 focus-within:ring-2 focus-within:ring-indigo-500 transition">
-          <FiSearch className="text-lg text-gray-800" />
+        <label className="flex items-center w-full px-4 py-2 rounded-full bg-gray-100 focus-within:ring-2 focus-within:ring-blue-400 transition-all">
+          <FiSearch className="text-lg text-gray-500" />
           <input
             type="text"
-            className="ml-3 w-full bg-transparent text-sm outline-none placeholder-gray-800 text-grey-900"
-            placeholder="Search users..."
+            className="ml-3 w-full bg-transparent text-sm outline-none placeholder-gray-500 text-gray-900"
+            placeholder="Search or start a new chat"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

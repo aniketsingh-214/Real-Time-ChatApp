@@ -9,8 +9,8 @@ function useGetAllUsers() {
       setLoading(true);
       try {
         const token = Cookies.get("jwt");
-        const response = await axios.get("/api/user/allusers", {
-          credentials: "include",
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/allusers`, {
+          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -18,7 +18,7 @@ function useGetAllUsers() {
         setAllUsers(response.data);
         setLoading(false);
       } catch (error) {
-        console.log("Error in useGetAllUsers: " + error);
+        // Error handled by UI fallback
       }
     };
     getUsers();

@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://real-time-chat-application-wine.vercel.app", 
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"],
     credentials: true
   },
@@ -26,6 +26,19 @@ io.on("connection", (socket) => {
   }
   io.emit("getOnlineUsers", Object.keys(users));
 
+  socket.on("typing", ({ receiverId }) => {
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("typing", { senderId: userId });
+    }
+  });
+
+  socket.on("stopTyping", ({ receiverId }) => {
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("stopTyping", { senderId: userId });
+    }
+  });
   socket.on("disconnect", () => {
     delete users[userId];
     io.emit("getOnlineUsers", Object.keys(users));

@@ -5,6 +5,7 @@ import Typesend from "./Typesend";
 import useConversation from "../../statemanage/useConversation.js";
 import { useAuth } from "../../context/AuthProvider.jsx";
 import { CiMenuFries } from "react-icons/ci";
+import { BiMessageSquareDetail } from "react-icons/bi";
 
 function Right() {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -12,23 +13,18 @@ function Right() {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="w-full bg-grey-100 text-gray-300">
-      <div>
-        {!selectedConversation ? (
-          <NoChatSelected />
-        ) : (
-          <>
-            <Chatuser />
-            <div
-              className=" flex-1 overflow-y-auto"
-              style={{ maxHeight: "calc(84vh - 6vh)" }}
-            >
-              <Messages />
-            </div>
-            <Typesend />
-          </>
-        )}
-      </div>
+    <div className="w-full bg-[#f0f2f5] text-gray-900 flex flex-col h-screen">
+      {!selectedConversation ? (
+        <NoChatSelected />
+      ) : (
+        <>
+          <Chatuser />
+          <div className="flex-1 overflow-y-auto">
+            <Messages />
+          </div>
+          <Typesend />
+        </>
+      )}
     </div>
   );
 }
@@ -38,7 +34,7 @@ export default Right;
 const NoChatSelected = () => {
   const [authUser] = useAuth();
   return (
-  <div className="relative flex-1 bg-gradient-to-tr from-gray-100 via-gray-100 to-gray-200 text-gray-900">
+  <div className="relative flex-1 bg-[#f0f2f5] text-gray-900 border-l border-gray-200">
     {/* Mobile Menu Icon */}
     <label
       htmlFor="my-drawer-2"
@@ -49,16 +45,15 @@ const NoChatSelected = () => {
 
     {/* Centered Welcome Message */}
     <div className="h-full flex flex-col items-center justify-center text-center px-6 py-6">
-      <div className="space-y-4">
-        <h1 className="text-xl md:text-3xl font-semibold leading-relaxed text-gray-800 drop-shadow-md">
-          Welcome
-          <br />
-          <span className="font-bold text-indigo-600 drop-shadow-lg">
-            {authUser.user.fullname}
-          </span>
+      <div className="space-y-4 max-w-md mx-auto">
+        <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <BiMessageSquareDetail className="text-4xl text-blue-500" />
+        </div>
+        <h1 className="text-2xl md:text-3xl font-light text-gray-800">
+          Welcome, <span className="font-semibold text-blue-600">{authUser.user.fullname}</span>
         </h1>
-        <p className="text-sm md:text-base text-gray-600 drop-shadow-sm max-w-md mx-auto">
-          No chat selected. Start a conversation by selecting someone from your contacts.
+        <p className="text-gray-500">
+          Select a chat from the sidebar to start messaging.
         </p>
       </div>
     </div>

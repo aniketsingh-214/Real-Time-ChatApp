@@ -9,20 +9,20 @@ function User({ user }) {
   const isOnline = onlineUsers.includes(user._id);
   return (
     <div
-      className={`hover:bg-gray-100 duration-300 ${
-        isSelected ? "bg-gray-300" : ""
+      className={`transition-colors duration-200 cursor-pointer ${
+        isSelected ? "bg-blue-50" : "hover:bg-gray-50"
       }`}
       onClick={() => setSelectedConversation(user)}
     >
-      <div className="flex space-x-4 px-8 py-3 hover:bg-gray-100 duration-300 cursor-pointer">
+      <div className="flex space-x-4 px-6 py-3 items-center">
         <div className={`avatar ${isOnline ? "online" : ""}`}>
-          <div className="w-12 h-12 rounded-full text-gray-400 bg-gray-100 flex items-center justify-center text-3xl">
+          <div className="w-12 h-12 rounded-full text-gray-400 bg-gray-200 flex items-center justify-center text-3xl overflow-hidden">
             <FaUserCircle />
           </div>
         </div>
-        <div>
-          <h1 className=" font-bold">{user.fullname}</h1>
-          <span>{user.email}</span>
+        <div className="flex-1 border-b border-gray-100 pb-3 pt-1">
+          <h1 className="font-medium text-gray-900 text-base">{user.fullname}</h1>
+          <span className="text-gray-500 text-sm truncate">{user.email}</span>
         </div>
       </div>
     </div>
